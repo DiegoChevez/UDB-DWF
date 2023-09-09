@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet name="css/bootstrap.min.css"/>
+    <title>Index JSF</title>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h:form>
+            <h:commandButton action="#{language.changeLanguage('es')}" value="Espanish" image="resourse/img/es2.png"/>
+            <h:outputText value="&#160"/>
+            <h:commandButton action="#{language.chageLanguage('en')}" value="English" image="resources/img/en2.png"/>
+        </h:form>
+
+        <h:form>
+            <div class="mb-3">
+                <h:outputLabel class="form-label" for="usuario" value="#{bundle.LoginUsuario}"/>
+                <h:inputText class="form-control" id="usuario" value="#{login.usuario}" required="true"
+                             requiredMessage="#{bundle.NombreRequerido}"/>
+                <h:message for="usuario" errorStyle="color:red"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel class="form-label" for="password" value="#{bundle.LoginPassword}"/>
+                <h:inputText class="form-control" id="password" value="#{login.password}" required="true"
+                             requiredMessage="#{bundle.PasswordRequerido}"/>
+                <h:message for="password" errorStyle="color:red"/>
+            </div>
+            <div class="mb-3">
+                <h:messages errorStyle="color:red" infoStyle="color:green"/>
+                <h:commandButton class="btn btn-success" value="Ingresar" action="#{login.validar()}"/>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+
+</html>
