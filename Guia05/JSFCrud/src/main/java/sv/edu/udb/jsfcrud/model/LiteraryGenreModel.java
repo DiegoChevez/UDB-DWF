@@ -11,7 +11,7 @@ public class LiteraryGenreModel extends Connection{
 	}
 	public List<LiteraryGenre> getLiteraryGenre() throws SQLException{
 		this.connect();
-		PreparedStatement ps = con.prepareStatement("SELECT id, name from literarygenre");;
+		PreparedStatement ps = con.prepareStatement("SELECT id, name from literarygenre");
 				ResultSet result = ps.executeQuery();
 		List<LiteraryGenre> list = new ArrayList<LiteraryGenre>();
 		while(result.next()){
