@@ -115,6 +115,7 @@ public class ProductosBean {
 
 	public String updateProducto(Long productoId) {
 		try {
+
 			ProductosDao productoDao = new ProductosDao();
 			Productos existingProducto = productoDao.getProductoById(productoId);
 

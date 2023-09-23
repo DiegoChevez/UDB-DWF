@@ -7,10 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import sv.edu.udb.hibernatecrud.managedbean.CategoriasBean;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ProductosDao {
+	private static final Logger logger = Logger.getLogger(CategoriasBean.class.getName());
 	public void addProducto(Productos producto) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -51,6 +54,8 @@ public class ProductosDao {
 	}
 
 	public void updateProducto(Productos producto) {
+		logger.info("nuevo producto: " + producto.getEstado_producto());
+		logger.info("nuevo producto: " + producto.getCategoria_id());
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = null;
@@ -59,10 +64,12 @@ public class ProductosDao {
 			transaction = session.beginTransaction();
 			session.update(producto);
 			session.getTransaction().commit();
+			logger.info("Si se actualiza");
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (transaction != null) {
 				transaction.rollback();
+				logger.info("Problema");
 			}
 		} finally {
 			session.close();
