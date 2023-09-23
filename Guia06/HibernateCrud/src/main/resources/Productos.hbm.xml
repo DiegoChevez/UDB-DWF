@@ -9,7 +9,7 @@
             <generator class="native"/>
         </id>
         <property name="categoria_id" column="categoria_id" insert="false"
-                  update="false"/> <!-- Aquí se establecen insertable y updatable en false -->
+                  update="false"/>
         <property name="producto" column="producto"/>
         <property name="descripcion_producto" column="descripcion_producto"/>
         <property name="estado_producto" column="estado_producto"/>

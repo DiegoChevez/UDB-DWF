@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet name="css/bootstrap.min.css"/>
+    <title>Gestión de Productos</title>
+</h:head>
+<h:body>
+    <h:form styleClass="container">
+        <h:panelGrid columns="2">
+            <h:outputLabel for="producto_id" value="ID:" styleClass="form-label"/>
+            <div class="mb-3">
+                <h:inputText styleClass="form-control" id="producto_id" value="#{productosBean.producto_id}"/>
+            </div>
+            <h:outputLabel for="producto" value="Producto:" styleClass="form-label"/>
+            <div class="mb-3">
+                <h:inputText styleClass="form-control" id="producto" value="#{productosBean.producto}"/>
+            </div>
+            <h:outputLabel for="descripcion_producto" value="Descripción:" styleClass="form-label"/>
+            <div class="mb-3">
+                <h:inputText styleClass="form-control" id="descripcion_producto" value="#{productosBean.descripcion_producto}"/>
+            </div>
+            <h:outputLabel for="categoria_id" value="Categoría:" styleClass="form-label"/>
+            <div class="mb-3">
+                <h:selectOneMenu id="categoria_id" styleClass="form-select" value="#{productosBean.categoria_id}">
+                    <f:selectItems value="#{productosBean.categorias}" var="cat" itemValue="#{cat.categoria_id}"
+                                   itemLabel="#{cat.categoria}"/>
+                </h:selectOneMenu>
+            </div>
+            <h:outputLabel for="estado_producto" value="Estado:" styleClass="form-label"/>
+            <div class="mb-3">
+                <h:selectOneMenu styleClass="form-select" id="estado_producto" value="#{productosBean.estado_producto}">
+                    <f:selectItem itemValue="activo" itemLabel="Activo"/>
+                    <f:selectItem itemValue="inactivo" itemLabel="Inactivo"/>
+                </h:selectOneMenu>
+            </div>
+        </h:panelGrid>
+        <div class="mb-3">
+            <h:commandButton styleClass="btn btn-primary" value="Guardar" action="#{productosBean.addProducto()}">
+                <f:ajax execute="@form" render="tableForm"/>
+            </h:commandButton>
+            <h:commandButton styleClass="btn btn-primary" value="Consultar Producto" action="#{productosBean.returnProductoId(productosBean.producto_id)}">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+            <h:commandButton styleClass="btn btn-danger" value="Eliminar" action="#{productosBean.deleteProducto(productosBean.producto_id)}">
+                <f:ajax execute="@form" render="tableForm"/>
+            </h:commandButton>
+            <h:commandButton styleClass="btn btn-primary" value="Actualizar" action="#{productosBean.updateProducto(productosBean.producto_id)}">
+                <f:ajax execute="@form" render="tableForm"/>
+            </h:commandButton>
+        </div>
+    </h:form>
+
+    <br/>
+    <h:form id="tableForm" styleClass="container">
+        <h:dataTable id="productosTable" styleClass="table table-striped" var="list" value="#{productosBean.productos}">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID"/>
+                </f:facet>
+                <h:outputText value="#{list.producto_id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Producto"/>
+                </f:facet>
+                <h:outputText value="#{list.producto}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Descripción"/>
+                </f:facet>
+                <h:outputText value="#{list.descripcion_producto}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Categoría"/>
+                </f:facet>
+                <h:outputText value="#{list.categoria_id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Estado"/>
+                </f:facet>
+                <h:outputText value="#{list.estado_producto}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>

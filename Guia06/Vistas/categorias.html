@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/0fc218370a.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="container mt-5">
+  <div class="navegacion d-flex justify-content-between align-items-center">
+    <a href="index.html" class="btn btn-outline-secondary d-inline-flex align-items-center">
+      <i class="fa-solid fa-circle-left me-2"></i> Regresar
+    </a>
+
+    <h1 class="text-center">Gestión de Categorías</h1>
+
+    <a href="productos.html" class="btn btn-outline-primary d-inline-flex align-items-center">Ver Productos<i
+        class="fa-solid fa-file-circle-check ms-2"></i>
+    </a>
+  </div>
+  <hr class="border border-primary border-1 opacity-50" />
+
+  <div class="categorias">
+
+    <div class="navegacion d-flex justify-content-between align-items-center">
+
+      <h4 class="display-6 text-center">Categorías</h4>
+
+      <button type="button" class="btn btn-primary d-inline-flex align-items-center" data-bs-toggle="modal"
+        data-bs-target="#agregarCategoria">
+        <i class="fa-solid fa-plus me-2"></i>Agregar Categoria
+      </button>
+    </div>
+
+
+
+    <table class="listaCategoriasTable table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Estado</th>
+          <th scope="col"><i class="fa-solid fa-gears"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>
+            <button class="btn btn-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item text-info" href="#" data-bs-toggle="modal" data-bs-target="#modificarCategoria"><i
+                    class="fa-regular fa-pen-to-square me-2"></i>Editar</a>
+              </li>
+              <li><a class="dropdown-item text-danger" href="#"><i class="fa-regular fa-trash-can me-2"></i>Eliminar</a></li>
+              <li><a class="dropdown-item text-warning" href="#"><i class="fa-solid fa-ban me-2"></i>Desactivar</a></li>
+              <li><a class="dropdown-item text-success" href="#"><i class="fa-regular fa-circle-check me-2"></i>Activar</a></li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modales -->
+
+  <!-- ModalAddCategoria -->
+  <div class="modal fade" id="modificarCategoria" tabindex="-1" aria-labelledby="modificarCategoriaLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modificarCategoriaLabel">Modificar Categoria</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2>Formulario de Categoría</h2>
+          <form id="formulario-categoria">
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoría</label>
+              <input type="text" class="form-control" id="categoria" name="categoria"
+                placeholder="Ingrese la categoría">
+            </div>
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción de la Categoría</label>
+              <textarea class="form-control" id="descripcion" name="descripcion" rows="4"
+                placeholder="Ingrese la descripción de la categoría"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado de la Categoría</label>
+              <select class="form-select" id="estado" name="estado">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" form="formulario-categoria"
+            data-bs-dismiss="modal">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="agregarCategoria" tabindex="-1" aria-labelledby="agregarCategoriaLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="agregarCategoriaLabel">Agregar Categoria</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2>Formulario de Categoría</h2>
+          <form id="formulario-categoria">
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoría</label>
+              <input type="text" class="form-control" id="categoria" name="categoria"
+                placeholder="Ingrese la categoría">
+            </div>
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción de la Categoría</label>
+              <textarea class="form-control" id="descripcion" name="descripcion" rows="4"
+                placeholder="Ingrese la descripción de la categoría"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado de la Categoría</label>
+              <select class="form-select" id="estado" name="estado">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" form="formulario-categoria"
+            data-bs-dismiss="modal">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
