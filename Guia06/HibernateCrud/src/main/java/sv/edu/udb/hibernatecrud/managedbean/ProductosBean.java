@@ -117,16 +117,16 @@ public class ProductosBean {
 		try {
 
 			ProductosDao productoDao = new ProductosDao();
-			Productos existingProducto = productoDao.getProductoById(productoId);
+			Productos productoActual = productoDao.getProductoById(productoId);
 
-			if (existingProducto != null) {
+			if (productoActual != null) {
 				// Actualiza las propiedades del producto existente con los valores del bean
-				existingProducto.setProducto(this.producto);
-				existingProducto.setDescripcion_producto(this.descripcion_producto);
-				existingProducto.setEstado_producto(this.estado_producto);
-				existingProducto.setCategoria_id(this.categoria_id);
+				productoActual.setProducto(this.producto);
+				productoActual.setDescripcion_producto(this.descripcion_producto);
+				productoActual.setEstado_producto(this.estado_producto);
+				productoActual.setCategoria_id(this.categoria_id);
 
-				productoDao.updateProducto(existingProducto);
+				productoDao.updateProducto(productoActual);
 				logger.info("Producto actualizado correctamente");
 
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,

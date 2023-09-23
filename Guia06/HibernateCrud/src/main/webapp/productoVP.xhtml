@@ -41,7 +41,7 @@
         </h:panelGrid>
         <div class="mb-3">
             <h:commandButton styleClass="btn btn-primary" value="Guardar" action="#{productosBean.addProducto()}">
-                <f:ajax execute="@form" render="tableForm"/>
+
             </h:commandButton>
             <h:commandButton styleClass="btn btn-primary" value="Consultar Producto" action="#{productosBean.returnProductoId(productosBean.producto_id)}">
                 <f:ajax execute="@form" render="@form"/>
@@ -50,7 +50,7 @@
                 <f:ajax execute="@form" render="tableForm"/>
             </h:commandButton>
             <h:commandButton styleClass="btn btn-primary" value="Actualizar" action="#{productosBean.updateProducto(productosBean.producto_id)}">
-                <f:ajax execute="@form" render="tableForm"/>
+
             </h:commandButton>
         </div>
     </h:form>
