@@ -17,26 +17,27 @@ import java.math.BigDecimal;
 		@NamedQuery(name = "EstudiantesEntity.findByCarrera", query = "SELECT e FROM EstudiantesEntity e WHERE e.carrera = :carrera")
 })
 public class EstudiantesEntity {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@Column(name = "carnet")
+	@Column(name = "carnet", nullable = false, length = 8)
 	private String carnet;
 	@Basic
-	@Column(name = "nombres")
+	@Column(name = "nombres", nullable = false, length = 40)
 	private String nombres;
 	@Basic
-	@Column(name = "apellidos")
+	@Column(name = "apellidos", nullable = false, length = 40)
 	private String apellidos;
 	@Basic
-	@Column(name = "edad")
+	@Column(name = "edad", nullable = false)
 	private int edad;
 	@Basic
-	@Column(name = "cum")
+	@Column(name = "cum", nullable = false, precision = 2)
 	private BigDecimal cum;
 	@Basic
-	@Column(name = "genero")
+	@Column(name = "genero", nullable = false, length = 1)
 	private String genero;
 	@Basic
-	@Column(name = "carrera")
+	@Column(name = "carrera", nullable = false, length = 40)
 	private String carrera;
 	public String getCarnet() {
 		return carnet;

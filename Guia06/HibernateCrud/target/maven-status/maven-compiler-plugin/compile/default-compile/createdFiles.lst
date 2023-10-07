@@ -1,0 +1,11 @@
+sv\edu\udb\hibernatecrud\Productos.class
+sv\edu\udb\hibernatecrud\HibernateUtil.class
+sv\edu\udb\hibernatecrud\dao\ProductosDao.class
+sv\edu\udb\hibernatecrud\managedbean\ProductosBean.class
+sv\edu\udb\hibernatecrud\TestResult.class
+sv\edu\udb\hibernatecrud\dao\CategoriasDao.class
+sv\edu\udb\hibernatecrud\Test.class
+sv\edu\udb\hibernatecrud\Categorias.class
+sv\edu\udb\hibernatecrud\managedbean\CategoriasBean.class
+sv\edu\udb\hibernatecrud\Test2.class
+sv\edu\udb\hibernatecrud\HelloServlet.class

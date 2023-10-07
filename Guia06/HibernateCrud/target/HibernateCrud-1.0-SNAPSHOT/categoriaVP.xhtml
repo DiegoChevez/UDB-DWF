@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet name="css/bootstrap.min.css"/>
+    <title>Agregar Vehiculo</title>
+</h:head>
+<h:body>
+    <h:form styleClass="container">
+        <h:panelGrid columns="1">
+            <h:outputText styleClass="align-content-center text-center" value="Agregar Vehiculo"/> <br/>
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="categoria_id" value="ID: " styleClass="form-label"/>
+            <h:inputText styleClass="form-control" id="categoria_id" value="#{categoriasBean.categoria_id}"/>
+            <h:outputLabel for="categoria" value="Categoria: " styleClass="form-label"/>
+            <h:inputText styleClass="form-control" id="categoria" value="#{categoriasBean.categoria}"/>
+            <h:outputLabel for="descripcion_categoria" value="Descripcion: " styleClass="form-label"/>
+            <h:inputText styleClass="form-control" id="descripcion_categoria"
+                         value="#{categoriasBean.descripcion_categoria}"/>
+            <h:outputLabel for="estado_categoria" value="Estado: " styleClass="form-label"/>
+            <h:inputText styleClass="form-control" id="estado_categoria" value="#{categoriasBean.estado_categoria}"/>
+            <h:panelGrid columns="4">
+                <h:commandButton styleClass="btn btn-primary center-block" value="Guardar"
+                                 action="#{categoriasBean.addCategoria()}">
+                    <f:ajax execute="@form" render="tableForm"/>
+                </h:commandButton>
+                <h:commandButton styleClass="btn btn-primary center-block" value="Consultar Cliente"
+                                 action="#{categoriasBean.returnCategoriaId(categoriasBean.categoria_id)}">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandButton>
+                <h:commandButton styleClass="btn btn-danger center-block" value="Eliminar"
+                                 action="#{categoriasBean.deleteCategoria(categoriasBean.categoria_id)}">
+                    <f:ajax execute="@form" render="tableForm"/>
+                </h:commandButton>
+                <h:commandButton styleClass="btn btn-primary center-block" value="Actualizar"
+                                 action="#{categoriasBean.updateCategoria(categoriasBean.categoria_id)}">
+                    <f:ajax execute="@form" render="tableForm"/>
+                </h:commandButton>
+            </h:panelGrid>
+            <h:messages infoStyle="color: blue" globalOnly="true"/>
+        </h:panelGrid>
+    </h:form>
+
+    <br/>
+    <h:form  id="tableForm" styleClass="container">
+        <h:dataTable id="categoriasTable" styleClass="table table-striped" var="list" value="#{categoriasBean.categorias}">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID"/>
+                </f:facet>
+                <h:outputText value="#{list.categoria_id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Categoria"/>
+                </f:facet>
+                <h:outputText value="#{list.categoria}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Descripción"/>
+                </f:facet>
+                <h:outputText value="#{list.descripcion_categoria}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Estado"/>
+                </f:facet>
+                <h:outputText value="#{list.estado_categoria}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>
