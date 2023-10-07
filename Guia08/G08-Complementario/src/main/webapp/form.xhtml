@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="templates/plantilla.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:define name="content">
+        <h:form styleClass="col-sm-6">
+            <h2>Registro de entradas</h2>
+            <h:panelGrid columns="2" styleClass="table">
+                <h:outputLabel for="usuario">usuario</h:outputLabel>
+                <h:inputText id="usuario" styleClass="form-control"
+                             value="#{usuarioBean.usuario.usuario}"></h:inputText>
+
+                <h:outputLabel for="correo">correo</h:outputLabel>
+                <h:inputText id="correo" styleClass="form-control"
+                             value="#{usuarioBean.usuario.correo}"></h:inputText>
+
+                <h:outputLabel for="contrasena">contraseña</h:outputLabel>
+                <h:inputText id="contrasena" styleClass="form-control"
+                             value="#{usuarioBean.usuario.contrasena}"></h:inputText>
+
+                <h:outputLabel for="rolId">rol</h:outputLabel>
+                <h:inputText id="rolId" styleClass="form-control"
+                             value="#{usuarioBean.usuario.rolId}"></h:inputText>
+            </h:panelGrid>
+            <h:commandButton value="Publicar" styleClass="btn btn-primary"
+                             action="#{usuarioBean.guardarUsuario()}"></h:commandButton>
+        </h:form>
+    </ui:define>
+</ui:composition>

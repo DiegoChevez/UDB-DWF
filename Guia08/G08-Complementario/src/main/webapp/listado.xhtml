@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://java.sun.com/jsf/core"
+        template="templates/plantillaboot.xhtml">
+    <ui:define name="contenido">
+        <b:dataTable value="#{usuarioBean.usuarios}" var="usuario"
+                     id="usuariosPool"
+                     styleClass="table table-striped table-bordered">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID" />
+                </f:facet>
+                <h:outputText value="#{usuario.usuarioId}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Usuario" />
+                </f:facet>
+                <h:outputText value="#{usuario.usuario}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Correo" />
+                </f:facet>
+                <h:outputText value="#{usuario.correo}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Contraseña" />
+                </f:facet>
+                <h:outputText value="#{usuario.contrasena}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Rol" />
+                </f:facet>
+                <h:outputText value="#{usuario.rolId}" />
+            </h:column>
+        </b:dataTable>
+        <b:messages />
+    </ui:define>
+</ui:composition>
