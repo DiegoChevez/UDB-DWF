@@ -1,33 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
                 template="templates/plantilla.xhtml">
     <ui:define name="content">
-        <div class="row" style="margin-top: 2%;">
-            <h3 class="text-center">Entradas de blog</h3>
-            <ui:repeat var="e" value="#{usuarioBean.usuarios}" offset="0"
-                       size="#{usuarioBean.usuarios.size()}" step="1">
-                <div class="col-sm-3">
-                    <h:form>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Titulo: #{e.usuarioId}</h5>
-                                <h5 class="card-title">Titulo: #{e.usuario}</h5>
-                                <p class="card-text">Titulo: #{e.correo}</p>
-                                <p class="card-text">Titulo: #{e.contrasena}</p>
-                                <p class="card-text">Titulo: #{e.rolId}</p>
-                                <h:commandLink styleClass="btn btn-primary" value="Editar"
-                                               action="#{usuarioBean.editarUsuario(e)}"></h:commandLink>
-                                <h:commandLink styleClass="btn btn-danger" value="Eliminar"
-                                               onclick="return confirmarEliminacion();"
-                                               action="#{usuarioBean.eliminarUsuario(e)}">
+        <h3 class="text-center">Entradas de blog</h3>
+        <h:form>
+            <div class="row">
+                <ui:repeat var="e" value="#{usuarioBean.usuarios}">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">ID: #{e.usuarioId}</h5>
+                                <p class="card-text">Usuario: #{e.usuario}</p>
+                                <p class="card-text">Correo: #{e.correo}</p>
+                                <p class="card-text">Contraseña: #{e.contrasena}</p>
+                                <p class="card-text">Rol: #{e.rolId}</p>
+                                <h:commandLink styleClass="btn btn-info btn-rounded" value="Editar"
+                                               action="#{usuarioBean.editarUsuario(e)}">
+                                </h:commandLink>
+                                <h:commandLink styleClass="btn btn-danger btn-rounded me-2" value="Eliminar"
+                                               action="#{usuarioBean.eliminarUsuario(e.usuarioId)}">
                                 </h:commandLink>
                             </div>
                         </div>
-                    </h:form>
-                </div>
-            </ui:repeat>
-        </div>
+                    </div>
+                </ui:repeat>
+            </div>
+        </h:form>
     </ui:define>
 </ui:composition>

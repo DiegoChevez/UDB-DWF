@@ -1,9 +1,9 @@
 package sv.edu.udb.models;
-import sv.edu.udb.entities.UsuariosEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import sv.edu.udb.utils.JpaUtil;
+import sv.edu.udb.entities.UsuariosEntity;
 import java.util.List;
 public class UsuarioModel {
 	public List<UsuariosEntity> listarUsuarios() {

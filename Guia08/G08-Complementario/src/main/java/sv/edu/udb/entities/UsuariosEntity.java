@@ -10,20 +10,17 @@ public class UsuariosEntity {
 	@Column(name = "usuario_id", nullable = false)
 	private int usuarioId;
 	@Basic
-	@Column(name = "usuario", nullable = true, length = 20)
+	@Column(name = "usuario", nullable = false, length = 25)
 	private String usuario;
 	@Basic
-	@Column(name = "correo", nullable = true, length = 100)
+	@Column(name = "correo", nullable = false, length = 100)
 	private String correo;
 	@Basic
-	@Column(name = "rol_id", nullable = true)
-	private Integer rolId;
-	@Basic
-	@Column(name = "contrasena", nullable = true, length = 20)
+	@Column(name = "contrasena", nullable = false, length = -1)
 	private String contrasena;
-	@ManyToOne
-	@JoinColumn(name = "rol_id", referencedColumnName = "rol_id")
-	private RolesEntity rolesByRolId;
+	@Basic
+	@Column(name = "rol_id", nullable = false)
+	private Integer rolId;
 
 	public int getUsuarioId() {
 		return usuarioId;
@@ -49,20 +46,20 @@ public class UsuariosEntity {
 		this.correo = correo;
 	}
 
-	public Integer getRolId() {
-		return rolId;
-	}
-
-	public void setRolId(Integer rolId) {
-		this.rolId = rolId;
-	}
-
 	public String getContrasena() {
 		return contrasena;
 	}
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+
+	public Integer getRolId() {
+		return rolId;
+	}
+
+	public void setRolId(Integer rolId) {
+		this.rolId = rolId;
 	}
 
 	@Override
@@ -79,13 +76,13 @@ public class UsuariosEntity {
 		if (usuarioId != that.usuarioId) {
 			return false;
 		}
+		if (rolId != that.rolId) {
+			return false;
+		}
 		if (usuario != null ? !usuario.equals(that.usuario) : that.usuario != null) {
 			return false;
 		}
 		if (correo != null ? !correo.equals(that.correo) : that.correo != null) {
-			return false;
-		}
-		if (rolId != null ? !rolId.equals(that.rolId) : that.rolId != null) {
 			return false;
 		}
 		if (contrasena != null ? !contrasena.equals(that.contrasena) : that.contrasena != null) {
@@ -100,16 +97,8 @@ public class UsuariosEntity {
 		int result = usuarioId;
 		result = 31 * result + (usuario != null ? usuario.hashCode() : 0);
 		result = 31 * result + (correo != null ? correo.hashCode() : 0);
-		result = 31 * result + (rolId != null ? rolId.hashCode() : 0);
 		result = 31 * result + (contrasena != null ? contrasena.hashCode() : 0);
+		result = 31 * result + rolId;
 		return result;
-	}
-
-	public RolesEntity getRolesByRolId() {
-		return rolesByRolId;
-	}
-
-	public void setRolesByRolId(RolesEntity rolesByRolId) {
-		this.rolesByRolId = rolesByRolId;
 	}
 }
