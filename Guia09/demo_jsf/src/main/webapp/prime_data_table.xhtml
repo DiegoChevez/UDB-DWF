@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Test Page</ui:define>
+
+    <ui:define name="viewname">Test Page</ui:define>
+
+    <ui:define name="content">
+        <h:body>
+            <h:form>
+                <p:selectCheckboxMenu id="menu"
+                                      dynamic="true"
+                                      filter="true" filterMatchMode="startsWith"
+                                      label="Cities"
+                                      style="width: 15rem" panelStyle="width: 15rem" scrollHeight="250"
+                                      value="#{primeFacesView.selectedCities}">
+                    <f:selectItems value="#{primeFacesView.cities}"/>
+
+                    <f:facet name="footer">
+                        <p:divider styleClass="mt-0"/>
+                        <h:outputText value="#{primeFacesView.cities.size()} cities"
+                                      styleClass="py-1 block font-bold"/>
+                    </f:facet>
+                </p:selectCheckboxMenu>
+
+                <div class="card">
+                    <p:dataTable var="student" value="#{primeFacesView.students}">
+                        <p:column headerText="Name">
+                            <h:outputText value="#{student.name}"/>
+                        </p:column>
+
+                        <p:column headerText="Lastname">
+                            <h:outputText value="#{student.lastname}"/>
+                        </p:column>
+
+                        <p:column headerText="email">
+                            <h:outputText value="#{student.email}"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </h:form>
+        </h:body>
+    </ui:define>
+
+</ui:composition>

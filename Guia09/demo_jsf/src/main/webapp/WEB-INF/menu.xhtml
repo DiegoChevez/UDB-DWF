@@ -1,0 +1,92 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pr="http://primefaces.org/rain">
+
+<div class="menu-wrapper">
+    <div class="layout-menu-container">
+        <ui:fragment rendered="#{guestPreferences.profileMode == 'popup' ? false : true}">
+            <div class="layout-profile">
+                <a class="layout-profile-button" href="#">
+                    <span class="image-name">
+                        <p:graphicImage name="images/avatar-profilemenu.png" library="rain-layout" />
+                        <span class="layout-profile-userinfo">
+                            <span class="layout-profile-name">Jordi Santiago</span>
+                            <span class="layout-profile-mail">jordi@primetek.com.tr</span>
+                        </span>
+                    </span>
+                    <i class="layout-profile-icon pi pi-chevron-down"/>
+                </a>
+                <ul class="layout-profile-menu">
+                    <li>
+                        <a href="#">
+                            <i class="pi pi-user"/>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="pi pi-cog"/>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="pi pi-envelope"/>
+                            <span>Messages</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="pi pi-bell"/>
+                            <span>Notifications</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ui:fragment>
+        <h:form id="menuform">
+            <pr:menu widgetVar="RainMenuWidget">
+                <p:submenu id="m_dashboard" label="Dashboard" icon="pi pi-home">
+                    <p:menuitem id="m_inicio" value="Inicio" icon="pi pi-home" url="#"></p:menuitem>
+                    <p:menuitem id="m_perfil" value="Mi Perfil" icon="pi pi-user-edit" url="#"></p:menuitem>
+                </p:submenu>
+                <p:submenu id="m_usuario" label="Usuarios" icon="pi pi-star-fill">
+                    <p:menuitem id="m_agregarUsuario" value="Agregar Usuario" icon="pi pi-user-plus" url="#">
+                    </p:menuitem>
+                    <p:menuitem id="m_verUsuario" value="Ver Usuarios" icon="pi pi-users" url="#">
+                    </p:menuitem>
+                </p:submenu>
+                <p:submenu id="m_empleados" label="Empleados" icon="pi pi-prime">
+                    <p:menuitem id="m_agregarEmpleado" value="Agregar Empleado" icon="pi pi-user-plus" url="#">
+                    </p:menuitem>
+                    <p:menuitem id="m_verEmpleados" value="Ver Empleados" icon="pi pi-users" url="#">
+                    </p:menuitem>
+                </p:submenu>
+                <p:submenu id="m_propietarios" label="Propietarios" icon="pi pi-compass">
+                    <p:menuitem id="m_agregarPropietario" value="Agregar Propietario" icon="pi pi-user-plus" url="#">
+                    </p:menuitem>
+                    <p:menuitem id="m_verPropietario" value="Ver Propietario" icon="pi pi-users"
+                                url="propietarios.xhtml">
+                    </p:menuitem>
+                </p:submenu>
+                <p:submenu id="m_arquileres" label="Arquileres" icon="pi pi-briefcase">
+                    <p:menuitem id="m_agregarArquiler" value="Agregar Arquiler" icon="pi pi-plus" url="#">
+                    </p:menuitem>
+                    <p:menuitem id="m_verArquiler" value="Ver Arquiler" icon="pi pi-chart-bar" url="#">
+                    </p:menuitem>
+                </p:submenu>
+                <p:submenu id="m_ventas" label="Ventas" icon="pi pi-briefcase">
+                    <p:menuitem id="m_agregarVenta" value="Agregar Venta" icon="pi pi-plus" url="#">
+                    </p:menuitem>
+                    <p:menuitem id="m_verVenta" value="Ver Venta" icon="pi pi-chart-bar" url="#">
+                    </p:menuitem>
+                </p:submenu>
+            </pr:menu>
+        </h:form>
+    </div>
+</div>
+
+</ui:composition>
