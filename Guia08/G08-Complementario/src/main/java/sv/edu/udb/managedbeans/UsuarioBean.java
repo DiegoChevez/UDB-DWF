@@ -6,8 +6,9 @@ import jakarta.faces.bean.RequestScoped;
 import jakarta.faces.context.FacesContext;
 import sv.edu.udb.models.UsuarioModel;
 import sv.edu.udb.utils.JsfUtil;
-import java.util.List;
 import sv.edu.udb.entities.UsuariosEntity;
+import java.util.List;
+
 @ManagedBean
 @RequestScoped
 public class UsuarioBean {

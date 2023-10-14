@@ -9,32 +9,14 @@
     <title>Blog</title>
 </h:head>
 <h:body>
-    <b:navBar brand="BLOG" brandHref="#" inverse="true">
+    <b:navBar brand="Saravias Rent a Car" brandHref="index" inverse="true">
         <b:navbarLinks>
-            <b:navLink value="Agregar Entrada" outcome="agregar"></b:navLink>
-            <b:navLink value="Ver entradas" outcome="listado"></b:navLink>
-            <b:dropMenu value="Menú desplegable">
-                <b:navLink value="UDB" href="http://www.udb.edu.sv"></b:navLink>
-                <b:navLink value="Java" href="https://www.java.com/es/"></b:navLink>
-                <b:navLink value="Algo más que agregar" href="#"></b:navLink>
-            </b:dropMenu>
+            <b:navLink value="Inicio" outcome="index"></b:navLink>
+            <b:navLink value="Agregar Usuarios" outcome="agregar"></b:navLink>
         </b:navbarLinks>
     </b:navBar>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-3 hidden-xs">
-                <ui:insert name="sidebar">
-                    <b:panel look="primary" title="Sidebar" >
-                        <b:listLinks>
-                            <b:navLink header="BootsFaces" />
-                            <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
-                                       icon="globe" iconAlign="right"/>
-                            <b:navLink outcome="index" value="Blog Original"
-                                       icon="folder-open" iconAlign="right"/>
-                        </b:listLinks>
-                    </b:panel>
-                </ui:insert>
-            </div>
             <div class="col-md-9 col-sm-9" >
                 <ui:insert name="contenido" >
                     CONTENIDO POR DEFECTO

@@ -19,5 +19,12 @@ C:/Users/Admin/Desktop/UDB - Ciclo4/DWF404/UDB-DWF/Guia08/G08-Complementario/src
       <jdbc-url>jdbc:mysql://localhost:3306/saravias_rentacar?useSSL=false</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="saravias_rentacar@localhost [2]" uuid="3806871a-bb10-4027-8224-b9adc33b8ebe">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/saravias_rentacar?useSSL=false</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
