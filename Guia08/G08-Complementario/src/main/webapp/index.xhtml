@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
                 template="templates/plantilla.xhtml">
     <ui:define name="content">
         <h3 class="text-center">Entradas de blog</h3>
         <h:form>
+<<<<<<< HEAD
             <h:dataTable value="#{usuarioBean.usuarios}" var="e" border="1" styleClass="table table-bordered">
                 <h:column>
                     <f:facet name="header">ID</f:facet>
@@ -36,6 +37,29 @@
                                    action="#{usuarioBean.eliminarUsuario(e.usuarioId)}"></h:commandLink>
                 </h:column>
             </h:dataTable>
+=======
+            <div class="row">
+                <ui:repeat var="e" value="#{usuarioBean.usuarios}">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">ID: #{e.usuarioId}</h5>
+                                <p class="card-text">Usuario: #{e.usuario}</p>
+                                <p class="card-text">Correo: #{e.correo}</p>
+                                <p class="card-text">Contraseña: #{e.contrasena}</p>
+                                <p class="card-text">Rol: #{e.rolId}</p>
+                                <h:commandLink styleClass="btn btn-info btn-rounded" value="Editar"
+                                               action="#{usuarioBean.editarUsuario(e)}">
+                                </h:commandLink>
+                                <h:commandLink styleClass="btn btn-danger btn-rounded me-2" value="Eliminar"
+                                               action="#{usuarioBean.eliminarUsuario(e.usuarioId)}">
+                                </h:commandLink>
+                            </div>
+                        </div>
+                    </div>
+                </ui:repeat>
+            </div>
+>>>>>>> c6292a9dc63c1fe6ed96c58667968e765740f9b1
         </h:form>
     </ui:define>
 </ui:composition>
