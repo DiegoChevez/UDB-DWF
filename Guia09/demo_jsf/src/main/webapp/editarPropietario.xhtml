@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Edicion de Propietario</ui:define>
+
+    <ui:define name="viewname">Propietario: #{usuariosBean.propietario.propietarioId}</ui:define>
+
+    <ui:define name="content">
+        <h:body>
+            <h:form id="editarPropietario">
+                <p:panelGrid columns="3">
+                    <h:outputLabel for="usuarioNombre" value="Nombre del Usuario"/>
+                    <p:inputText id="usuarioNombre" value="#{usuariosBean.usuario.nombreUsuario}"/>
+                    <h:outputLabel for="usuarioCorreo" value="Correo del Usuario"/>
+                    <p:inputText id="usuarioCorreo" value="#{usuariosBean.usuario.correoUsuario}"/>
+                    <h:outputLabel for="usuarioNombres" value="Nombres del Usuario"/>
+                    <p:inputText id="usuarioNombres" value="#{usuariosBean.propietario.nombresPropietario}"/>
+                    <h:outputLabel for="apellidosUsuario" value="Nombre del Usuario"/>
+                    <p:inputText id="apellidosUsuario" value="#{usuariosBean.propietario.apellidosPropietario}"/>
+                    <h:outputLabel for="usuarioTelefono" value="Nombre del Usuario"/>
+                    <p:inputText id="usuarioTelefono" value="#{usuariosBean.propietario.telefonoPropietario}"/>
+                    <h:outputLabel for="propietarioEstado" value="Nombre del Usuario"/>
+                    <p:inputText id="propietarioEstado" value="#{usuariosBean.propietario.estadoPropietario}"/>
+                    <h:outputLabel for="usuarioEstado" value="Estado de la cuenta"/>
+                    <p:inputText id="usuarioEstado" value="#{usuariosBean.usuario.estadoUsuario}"/>
+
+                    <h:commandButton
+                            style="background-color: #3C9462; color:white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;"
+                                     value="Actualizar" action="#{usuariosBean.guardarEdicionUsuarioPropietario()}"
+                    />
+                    <h:commandButton
+                            style="background-color: #65686a; color:white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;"
+                                     value="Cancelar" action="propietarios"/>
+                </p:panelGrid>
+            </h:form>
+
+        </h:body>
+    </ui:define>
+
+</ui:composition>

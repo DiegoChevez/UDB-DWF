@@ -5,54 +5,19 @@ import jakarta.persistence.Query;
 import sv.edu.udb.demo_jsf.entities.PropietarioEntity;
 import sv.edu.udb.demo_jsf.utils.JpaUtil;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class PropietarioModel {
+
 	public int insertarPropietario(PropietarioEntity propietario) {
+		Logger logger = Logger.getLogger(PropietarioModel.class.getName());
 		EntityManager em = JpaUtil.getEntityManager();
 		EntityTransaction tran = em.getTransaction();
-		try {
-			tran.begin(); // Iniciando transacción
-			em.persist(propietario); // Guardando el objeto en la BD
-			tran.commit(); // Confirmando la transacción
-			em.close();
-			return 1;
-		} catch (Exception e) {
-			em.close();
-			return 0;
-		}
-	}
-	public List<PropietarioEntity> listarPropietarios() {
-		// Obtengo una instancia de EntityManager
-		EntityManager em = JpaUtil.getEntityManager();
-		try {
-			Query consulta = em.createQuery("Select P from PropietarioEntity P");
-			List<PropietarioEntity> lista = consulta.getResultList();
-			em.close(); // Cerrando el EntityManager
-			return lista;
-		} catch (Exception e) {
-			em.close();
-			return null;
-		}
-	}
-
-	public PropietarioEntity buscarPropietarioPorId(Long id) {
-		EntityManager em = JpaUtil.getEntityManager();
-		try {
-			PropietarioEntity propietario = em.find(PropietarioEntity.class, id);
-			em.close();
-			return propietario;
-		} catch (Exception e) {
-			em.close();
-			return null;
-		}
-	}
-
-	public int actualizarPropietario(PropietarioEntity propietario) {
-		EntityManager em = JpaUtil.getEntityManager();
-		EntityTransaction tran = em.getTransaction();
+		logger.info("Propietario Model");
+		logger.info(propietario.toString());
 		try {
 			tran.begin();
-			em.merge(propietario);
+			em.persist(propietario);
 			tran.commit();
 			em.close();
 			return 1;
@@ -62,24 +27,76 @@ public class PropietarioModel {
 		}
 	}
 
-	public int eliminarPropietario(Long id) {
+
+
+	public int eliminarPropietario(PropietarioEntity propietario) {
 		EntityManager em = JpaUtil.getEntityManager();
 		EntityTransaction tran = em.getTransaction();
+
 		try {
 			tran.begin();
-			PropietarioEntity propietario = em.find(PropietarioEntity.class, id);
-			if (propietario != null) {
-				em.remove(propietario);
-				tran.commit();
-				em.close();
-				return 1;
-			} else {
-				em.close();
-				return 0;
-			}
+			propietario = em.find(PropietarioEntity.class, propietario.getPropietarioId());
+			em.remove(propietario);
+			tran.commit();
+			em.close();
+			return 1;
 		} catch (Exception e) {
+			if (tran.isActive()) {
+				tran.rollback();
+			}
 			em.close();
 			return 0;
 		}
 	}
+
+
+	public int actualizarPropietario(PropietarioEntity propietario) {
+		EntityManager em = JpaUtil.getEntityManager();
+		EntityTransaction tran = em.getTransaction();
+
+		try {
+			tran.begin();
+			PropietarioEntity updatedPropietario = em.merge(propietario);
+			tran.commit();
+			em.close();
+			return 1;
+		} catch (Exception e) {
+			if (tran.isActive()) {
+				tran.rollback();
+			}
+			em.close();
+			return 0;
+		}
+	}
+
+
+
+
+	public List<PropietarioEntity> listarPropietarios() {
+		EntityManager em = JpaUtil.getEntityManager();
+		try {
+			Query consulta = em.createQuery("Select P from PropietarioEntity P");
+			List<PropietarioEntity> lista = consulta.getResultList();
+			em.close();
+			return lista;
+		} catch (Exception e) {
+			em.close();
+			return null;
+		}
+	}
+
+
+
+	public PropietarioEntity buscarPropietarioPorId(String propietarioId) {
+		EntityManager em = JpaUtil.getEntityManager();
+		try {
+			PropietarioEntity propietario = em.find(PropietarioEntity.class, propietarioId);
+			em.close();
+			return propietario;
+		} catch (Exception e) {
+			em.close();
+			return null;
+		}
+	}
+
 }

@@ -1,42 +1,101 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/template.xhtml">
 
-<h:head>
-    <title>CRUD de Propietarios</title>
-</h:head>
-<h:body>
-    <h:form id="propietarioForm">
-        <h3>Crear Propietario</h3>
-        <p:panelGrid columns="2">
-            <h:outputLabel for="nombre" value="Nombre:" />
-            <p:inputText id="nombre" value="#{propietarioBean.propietario.nombresPropietario}" />
+    <ui:define name="title">Propietarios</ui:define>
 
-            <h:outputLabel for="apellido" value="Apellido:" />
-            <p:inputText id="apellido" value="#{propietarioBean.propietario.apellidosPropietario}" />
-        </p:panelGrid>
-        <p:commandButton value="Guardar" action="#{propietarioBean.guardarPropietario()}" update="propietarioForm" />
+    <ui:define name="viewname">Gestion de Propietarios</ui:define>
 
-        <h3>Propietarios Registrados</h3>
-        <p:dataTable value="#{propietarioBean.listaPropietarios}" var="propietario">
-            <p:column headerText="ID">
-                <h:outputText value="#{propietario.propietarioId}" />
-            </p:column>
-            <p:column headerText="Nombre">
-                <h:outputText value="#{propietario.nombresPropietario}" />
-            </p:column>
-            <p:column headerText="Apellido">
-                <h:outputText value="#{propietario.apellidosPropietario}" />
-            </p:column>
-            <p:column headerText="Acciones">
-                <p:commandButton value="Editar" action="#{propietarioBean.editarPropietario(propietario.propietarioId)}"
-                                 update="propietarioForm" />
-                <p:commandButton value="Eliminar" action="#{propietarioBean.eliminarPropietario(propietario.propietarioId)}"
-                                 update="propietarioForm" />
-            </p:column>
-        </p:dataTable>
-    </h:form>
-</h:body>
-</html>
+    <ui:define name="content">
+        <h:body>
+            <h:messages globalOnly="true" showDetail="true" showSummary="false"/>
+            <h:form id="agregarPropietario">
+                <p:commandButton value="Agregar Propietario" oncomplete="PF('dlgRegistro').show()"/>
+                <p:dialog header="Registro de Propietario" widgetVar="dlgRegistro" modal="true" resizable="false">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="nombresPropietario" value="Nombres del Propietario"/>
+                        <p:inputText id="nombresPropietario" value="#{usuariosBean.propietario.nombresPropietario}"
+                                     required="true"/>
+
+                        <h:outputLabel for="apellidosPropietario" value="Apellidos del Propietario"/>
+                        <p:inputText id="apellidosPropietario" value="#{usuariosBean.propietario.apellidosPropietario}"
+                                     required="true"/>
+
+                        <h:outputLabel for="correoUsuario" value="Correo del Usuario"/>
+                        <p:inputText id="correoUsuario" value="#{usuariosBean.usuario.correoUsuario}" required="true"/>
+
+                        <h:outputLabel for="contraseñaUsuario" value="Contraseña del Usuario"/>
+                        <p:inputText id="contraseñaUsuario" value="#{usuariosBean.usuario.contrasenaUsuario}"
+                                     required="true"/>
+
+                        <h:outputLabel for="telefonoPropietario" value="Telefono del Propietario"/>
+                        <p:inputText id="telefonoPropietario" value="#{usuariosBean.propietario.telefonoPropietario}"
+                                     required="true"/>
+
+                        <h:outputLabel for="estadoUsuario" value="Estado Usuario"/>
+                        <p:selectOneMenu id="estadoUsuario" value="#{usuariosBean.usuario.estadoUsuario}"
+                                         required="true">
+                            <f:selectItem itemLabel="Activo" itemValue="Activo"/>
+                            <f:selectItem itemLabel="Inactivo" itemValue="Inactivo"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel for="estadoPropietario" value="Estado del Propietario "/>
+                        <p:selectOneMenu id="estadoPropietario" value="#{usuariosBean.propietario.estadoPropietario}"
+                                         required="true">
+                            <f:selectItem itemLabel="Activo" itemValue="Activo"/>
+                            <f:selectItem itemLabel="Inactivo" itemValue="Inactivo"/>
+                        </p:selectOneMenu>
+
+                        <h:commandButton value="Guardar" action="propietario.xhtml"
+                                         style="background-color: #4c96de; color:white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;"
+                                         actionListener="#{usuariosBean.guardarUsuario()}"/>
+                        <p:commandButton styleClass="ui-button-secondary" value="Cancelar"
+                                         oncomplete="PF('dlgRegistro').hide()"
+                                          update=":agregarPropietario"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+            </h:form>
+
+
+            <h:form id="propietariosTable">
+                <p:dataTable id="propietarioTable" var="propietario" value="#{usuariosBean.listaPropietarios}">
+                    <!-- Define las columnas de la tabla -->
+                    <p:column headerText="ID Propietario">
+                        <h:outputText value="#{propietario.propietarioId}"/>
+                    </p:column>
+                    <p:column headerText="Nombres">
+                        <h:outputText value="#{propietario.nombresPropietario}"/>
+                    </p:column>
+                    <p:column headerText="Apellidos">
+                        <h:outputText value="#{propietario.apellidosPropietario}"/>
+                    </p:column>
+                    <p:column headerText="Teléfono">
+                        <h:outputText value="#{propietario.telefonoPropietario}"/>
+                    </p:column>
+                    <p:column headerText="Estado">
+                        <p:badge styleClass="mr-1"
+                                 severity="#{propietario.estadoPropietario eq 'Activo' ? 'success' : 'danger'}"
+                                 value="#{propietario.estadoPropietario}">
+                        </p:badge>
+                    </p:column>
+                    <p:column headerText="Operaciones">
+                        <h:commandButton
+                                style="background-color: #eba44c; color:white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;" value="Editar"
+                                         action="editarPropietario"
+                                         actionListener="#{usuariosBean.cargarDatosParaEdicion(propietario.propietarioId)}"/>
+                        <h:commandButton
+                                style="background-color: #db374e; color:white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;"
+                                value="Eliminar"
+                                actionListener="#{usuariosBean.eliminarUsuarioYPropietario(propietario.propietarioId)}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </h:body>
+    </ui:define>
+
+</ui:composition>

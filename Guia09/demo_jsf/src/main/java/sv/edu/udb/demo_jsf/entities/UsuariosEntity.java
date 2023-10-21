@@ -2,48 +2,33 @@ package sv.edu.udb.demo_jsf.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "usuarios", schema = "saravias_rentacar", catalog = "")
-public class UsuariosEntity {
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "usuarios", schema = "saraviasbd")
+public class UsuariosEntity implements Serializable {
 	@Id
 	@Column(name = "usuario_id", nullable = false, length = 5)
 	private String usuarioId;
 	@Basic
-	@Column(name = "nombre_usuario", nullable = true, length = 50)
+	@Column(name = "nombre_usuario", nullable = false, length = 100)
 	private String nombreUsuario;
 	@Basic
-	@Column(name = "correo_usuario", nullable = true, length = 100)
+	@Column(name = "correo_usuario", nullable = false, length = 100)
 	private String correoUsuario;
 	@Basic
-	@Column(name = "contrasena_usuario", nullable = true, length = -1)
+	@Column(name = "contrasena_usuario", nullable = false, length = 255)
 	private String contrasenaUsuario;
 	@Basic
-	@Column(name = "verificacion_usuario", nullable = true)
-	private Object verificacionUsuario;
+	@Column(name = "rol_usuario", nullable = false)
+	private String rolUsuario;
 	@Basic
-	@Column(name = "estado_usuario", nullable = true, length = 50)
+	@Column(name = "estado_usuario", nullable = false)
 	private String estadoUsuario;
-	@OneToMany(mappedBy = "usuariosByAdminUser")
-	private Collection<AdministracionEntity> administracionsByUsuarioId;
-	@OneToMany(mappedBy = "usuariosByClienteUser")
-	private Collection<ClienteEntity> clientesByUsuarioId;
-	@OneToMany(mappedBy = "usuariosByEmpleadoId")
-	private Collection<ConversacionesEntity> conversacionesByUsuarioId;
-	@OneToMany(mappedBy = "usuariosByUsuarioId")
-	private Collection<ConversacionesEntity> conversacionesByUsuarioId_0;
-	@OneToMany(mappedBy = "usuariosByEmpleadoUser")
-	private Collection<EmpleadosEntity> empleadosByUsuarioId;
-	@OneToMany(mappedBy = "usuariosByUsuarioId")
-	private Collection<MensajesEntity> mensajesByUsuarioId;
-	@OneToMany(mappedBy = "usuariosByPropietarioUser")
+	@OneToMany(mappedBy = "usuariosByCuentaUsuario", cascade = CascadeType.ALL)
 	private Collection<PropietarioEntity> propietariosByUsuarioId;
-	@ManyToOne
-	@JoinColumn(name = "rol_usuario", referencedColumnName = "rol_id")
-	private RolesEntity rolesByRolUsuario;
 
 	public String getUsuarioId() {
 		return usuarioId;
@@ -77,20 +62,20 @@ public class UsuariosEntity {
 		this.contrasenaUsuario = contrasenaUsuario;
 	}
 
-	public Object getVerificacionUsuario() {
-		return verificacionUsuario;
+	public String getRolUsuario() {
+		return rolUsuario;
 	}
 
-	public void setVerificacionUsuario(Object verificacionUsuario) {
-		this.verificacionUsuario = verificacionUsuario;
+	public void setRolUsuario(String rolUsuario) {
+		this.rolUsuario = rolUsuario;
 	}
 
-	public Object getEstadoUsuario() {
+	public String getEstadoUsuario() {
 		return estadoUsuario;
 	}
 
-	public void setEstadoUsuario(Object estadoUsuario) {
-		this.estadoUsuario = (String) estadoUsuario;
+	public void setEstadoUsuario(String estadoUsuario) {
+		this.estadoUsuario = estadoUsuario;
 	}
 
 	@Override
@@ -102,60 +87,12 @@ public class UsuariosEntity {
 			return false;
 		}
 		UsuariosEntity that = (UsuariosEntity) o;
-		return Objects.equals(usuarioId, that.usuarioId) && Objects.equals(nombreUsuario, that.nombreUsuario) && Objects.equals(correoUsuario, that.correoUsuario) && Objects.equals(contrasenaUsuario, that.contrasenaUsuario) && Objects.equals(verificacionUsuario, that.verificacionUsuario) && Objects.equals(estadoUsuario, that.estadoUsuario);
+		return Objects.equals(usuarioId, that.usuarioId) && Objects.equals(nombreUsuario, that.nombreUsuario) && Objects.equals(correoUsuario, that.correoUsuario) && Objects.equals(contrasenaUsuario, that.contrasenaUsuario) && Objects.equals(rolUsuario, that.rolUsuario) && Objects.equals(estadoUsuario, that.estadoUsuario);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(usuarioId, nombreUsuario, correoUsuario, contrasenaUsuario, verificacionUsuario, estadoUsuario);
-	}
-
-	public Collection<AdministracionEntity> getAdministracionsByUsuarioId() {
-		return administracionsByUsuarioId;
-	}
-
-	public void setAdministracionsByUsuarioId(Collection<AdministracionEntity> administracionsByUsuarioId) {
-		this.administracionsByUsuarioId = administracionsByUsuarioId;
-	}
-
-	public Collection<ClienteEntity> getClientesByUsuarioId() {
-		return clientesByUsuarioId;
-	}
-
-	public void setClientesByUsuarioId(Collection<ClienteEntity> clientesByUsuarioId) {
-		this.clientesByUsuarioId = clientesByUsuarioId;
-	}
-
-	public Collection<ConversacionesEntity> getConversacionesByUsuarioId() {
-		return conversacionesByUsuarioId;
-	}
-
-	public void setConversacionesByUsuarioId(Collection<ConversacionesEntity> conversacionesByUsuarioId) {
-		this.conversacionesByUsuarioId = conversacionesByUsuarioId;
-	}
-
-	public Collection<ConversacionesEntity> getConversacionesByUsuarioId_0() {
-		return conversacionesByUsuarioId_0;
-	}
-
-	public void setConversacionesByUsuarioId_0(Collection<ConversacionesEntity> conversacionesByUsuarioId_0) {
-		this.conversacionesByUsuarioId_0 = conversacionesByUsuarioId_0;
-	}
-
-	public Collection<EmpleadosEntity> getEmpleadosByUsuarioId() {
-		return empleadosByUsuarioId;
-	}
-
-	public void setEmpleadosByUsuarioId(Collection<EmpleadosEntity> empleadosByUsuarioId) {
-		this.empleadosByUsuarioId = empleadosByUsuarioId;
-	}
-
-	public Collection<MensajesEntity> getMensajesByUsuarioId() {
-		return mensajesByUsuarioId;
-	}
-
-	public void setMensajesByUsuarioId(Collection<MensajesEntity> mensajesByUsuarioId) {
-		this.mensajesByUsuarioId = mensajesByUsuarioId;
+		return Objects.hash(usuarioId, nombreUsuario, correoUsuario, contrasenaUsuario, rolUsuario, estadoUsuario);
 	}
 
 	public Collection<PropietarioEntity> getPropietariosByUsuarioId() {
@@ -164,13 +101,5 @@ public class UsuariosEntity {
 
 	public void setPropietariosByUsuarioId(Collection<PropietarioEntity> propietariosByUsuarioId) {
 		this.propietariosByUsuarioId = propietariosByUsuarioId;
-	}
-
-	public RolesEntity getRolesByRolUsuario() {
-		return rolesByRolUsuario;
-	}
-
-	public void setRolesByRolUsuario(RolesEntity rolesByRolUsuario) {
-		this.rolesByRolUsuario = rolesByRolUsuario;
 	}
 }

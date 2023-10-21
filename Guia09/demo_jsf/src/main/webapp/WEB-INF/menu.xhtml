@@ -50,8 +50,10 @@
         <h:form id="menuform">
             <pr:menu widgetVar="RainMenuWidget">
                 <p:submenu id="m_dashboard" label="Dashboard" icon="pi pi-home">
-                    <p:menuitem id="m_inicio" value="Inicio" icon="pi pi-home" url="#"></p:menuitem>
-                    <p:menuitem id="m_perfil" value="Mi Perfil" icon="pi pi-user-edit" url="#"></p:menuitem>
+                    <p:menuitem id="m_inicio" value="Inicio" icon="pi pi-home" url="index.xhtml">
+                    </p:menuitem>
+                    <p:menuitem id="m_perfil" value="Mi Perfil" icon="pi pi-user-edit" url="index.xhtml">
+                    </p:menuitem>
                 </p:submenu>
                 <p:submenu id="m_usuario" label="Usuarios" icon="pi pi-star-fill">
                     <p:menuitem id="m_agregarUsuario" value="Agregar Usuario" icon="pi pi-user-plus" url="#">
@@ -66,7 +68,7 @@
                     </p:menuitem>
                 </p:submenu>
                 <p:submenu id="m_propietarios" label="Propietarios" icon="pi pi-compass">
-                    <p:menuitem id="m_agregarPropietario" value="Agregar Propietario" icon="pi pi-user-plus" url="#">
+                    <p:menuitem id="m_agregarPropietario" value="Agregar Propietario" icon="pi pi-user-plus" url="propietarios.xhtml">
                     </p:menuitem>
                     <p:menuitem id="m_verPropietario" value="Ver Propietario" icon="pi pi-users"
                                 url="propietarios.xhtml">

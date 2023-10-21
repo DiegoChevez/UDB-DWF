@@ -5,21 +5,10 @@
              version="3.0">
     <persistence-unit name="default">
 
-        <class>sv.edu.udb.demo_jsf.entities.AdministracionEntity</class>
-        <class>sv.edu.udb.demo_jsf.entities.ClienteEntity</class>
-        <class>sv.edu.udb.demo_jsf.entities.ConversacionesEntity</class>
-        <class>sv.edu.udb.demo_jsf.entities.EmpleadosEntity</class>
-        <class>sv.edu.udb.demo_jsf.entities.MensajesEntity</class>
         <class>sv.edu.udb.demo_jsf.entities.PropietarioEntity</class>
-        <class>sv.edu.udb.demo_jsf.entities.PublicacionesEntity</class>
-        <class>sv.edu.udb.demo_jsf.entities.RolesEntity</class>
         <class>sv.edu.udb.demo_jsf.entities.UsuariosEntity</class>
         <properties>
-            <property name="hibernate.connection.url"
-                      value="jdbc:mysql://localhost:3306/saravias_rentacar?useSSL=false"/>
-            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.connection.username" value="root"/>
-            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/saravias_rentacar?useSSL=false"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/saraviasbd?useSSL=false"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="eclipselink.jdbc.user" value="root"/>
         </properties>
